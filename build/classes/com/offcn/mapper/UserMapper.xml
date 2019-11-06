@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!--
+		namespace绑定自定义的接口全类名
+		select中的id绑定接口中得方法
+	-->
+<mapper namespace="com.offcn.mapper.UserMapper">
+
+	<select id="isPhoneid" resultType="com.offcn.bean.OneUser">
+		select * from oneuser where phoneid=#{phoneid}
+		
+	</select>
+	<insert id="insertUser">
+		insert into oneuser values(#{phoneid},#{uname},#{upwd},#{ucrDate})
+	</insert>
+	
+	<select id="selectUser" resultType="com.offcn.bean.OneUser">
+		select * from oneuser where phoneid=#{phone} and upwd=#{pwd}
+	</select>
+	
+	<select id="isExistPhone" resultType="com.offcn.bean.OneUser">
+		select * from oneuser where phoneid=#{phone}
+	</select>
+	
+	<update id="updatePwd">
+		update oneuser set upwd=#{upwd} where phoneid=#{phoneid}
+	</update>
+
+</mapper>
